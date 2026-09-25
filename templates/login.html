@@ -1,0 +1,39 @@
+<!-- templates/login.html -->
+<!-- SCRUM-40: User Login - Banking App UI -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SecureBank – Login</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0f4f8; display: flex;
+           justify-content: center; align-items: center; height: 100vh; margin: 0; }
+    .card { background: white; padding: 2rem; border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1); width: 360px; }
+    h2 { color: #1a3c5e; margin-bottom: 1.5rem; text-align: center; }
+    input { width: 100%; padding: 0.6rem; margin: 0.5rem 0 1rem;
+            border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+    button { width: 100%; padding: 0.75rem; background: #1a3c5e;
+             color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; }
+    button:hover { background: #254f7a; }
+    .error { color: #c0392b; font-size: 0.875rem; margin-top: 0.5rem; text-align: center; }
+    .locked { color: #e67e22; font-weight: bold; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>🏦&�secureBank Login</h2>
+    {% if error %}
+      <p class="error {% if 'locked' in error|lower %}locked{% endif %}">{{ error }}</p>
+    {% endif %}
+    <form method="POST" action="/login">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required autocomplete="username" />
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required autocomplete="current-password" />
+      <button type="submit">Log In</button>
+    </form>
+  </div>
+</body>
+</html>
